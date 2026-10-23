@@ -33,7 +33,9 @@ The repository currently contains these scripts (filenames shown exactly as stor
 4. [`04_risk_distribution.sql`](./04_risk_distribution.sql) — risk-level distribution
 5. [`05_bivariate_analysis.sql`](./05_bivariate_analysis.sql) — bivariate analysis
 
-**Note:** A separate `06_Findings_&_Interpretation.sql` file is not present in the current repository. Findings are summarized in this README.
+6. [`06_findings_interpretation.sql`](./06_findings_interpretation.sql) — risk-level distribution, descriptive summaries by risk label, and age-band cross-tabulation.
+
+Run the script against the database containing the source table and verify its outputs before publishing numerical conclusions.
 
 ## Risk Categories
 
