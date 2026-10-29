@@ -41,3 +41,12 @@ This project demonstrates SQL skills in data validation, cleaning, descriptive a
 ## References
 - UCI Machine Learning Repository. [Maternal Health Risk dataset](https://archive.ics.uci.edu/dataset/863/maternal+health+risk).
 - [Predicting maternal risk level using machine learning models](https://bmcpregnancychildbirth.biomedcentral.com/counter/pdf/10.1186/s12884-024-07030-9) — discusses a commonly used version with 1,014 observations and seven attributes.
+
+## Code Review Findings
+A static review of the SQL scripts found issues to resolve before treating category summaries as final:
+- In `04_risk_distribution.sql`, the age-band `ELSE '70+'` also captures ages below the first band and NULL ages. Create explicit age bands and separate missing/out-of-range ages.
+- In `05_bivariate_analysis.sql`, blood-pressure, blood-sugar, heart-rate, and body-temperature bands use hard-coded labels such as “Normal” and “High”; several decimal intervals are not continuous. The script also labels heart rates 61–90 as “High Heart Rate.” Verify units and a cited clinical reference, or rename these as purely descriptive value bands and handle gaps explicitly.
+- The cleaning script identifies duplicate rows and invalid values but the presence of a query does not prove they were removed or resolved. Record the decisions and before/after counts.
+
+These are code-review observations; the SQL has not been executed against your local database during this review.
+
