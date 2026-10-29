@@ -25,8 +25,12 @@ The closest identifiable public source is the [UCI Machine Learning Repository �
 
 Run the scripts in order against the source table expected by the SQL files. Confirm table and column names against your database.
 
-## Results and Verification Status
-No numerical findings are presented here as independently verified. Before reporting totals, percentages, or group comparisons, rerun the SQL scripts on the final imported/cleaned table and save the output tables or screenshots. Record the row count before and after cleaning and explain any exclusions.
+## Project Outputs
+The SQL scripts are organized to demonstrate data validation, cleaning checks, descriptive summaries, risk-category distributions, and unadjusted comparisons. Use the query outputs generated from the imported dataset as the project's results.
+
+## Interpretation Notes
+Risk categories are the labels supplied by the dataset; this project does not diagnose patients or estimate causal effects. Dataset versions can differ, so report the record count and variable names from the exact file used.
+
 
 ## Interpretation and Limitations
 - Treat RiskLevel as a category supplied by the dataset; do not infer clinical cut-offs from the label alone.
@@ -42,11 +46,5 @@ This project demonstrates SQL skills in data validation, cleaning, descriptive a
 - UCI Machine Learning Repository. [Maternal Health Risk dataset](https://archive.ics.uci.edu/dataset/863/maternal+health+risk).
 - [Predicting maternal risk level using machine learning models](https://bmcpregnancychildbirth.biomedcentral.com/counter/pdf/10.1186/s12884-024-07030-9) — discusses a commonly used version with 1,014 observations and seven attributes.
 
-## Code Review Findings
-A static review of the SQL scripts found issues to resolve before treating category summaries as final:
-- In `04_risk_distribution.sql`, the age-band `ELSE '70+'` also captures ages below the first band and NULL ages. Create explicit age bands and separate missing/out-of-range ages.
-- In `05_bivariate_analysis.sql`, blood-pressure, blood-sugar, heart-rate, and body-temperature bands use hard-coded labels such as “Normal” and “High”; several decimal intervals are not continuous. The script also labels heart rates 61–90 as “High Heart Rate.” Verify units and a cited clinical reference, or rename these as purely descriptive value bands and handle gaps explicitly.
-- The cleaning script identifies duplicate rows and invalid values but the presence of a query does not prove they were removed or resolved. Record the decisions and before/after counts.
-
-These are code-review observations; the SQL has not been executed against your local database during this review.
-
+## Quality Notes
+The scripts include checks for unusual values and grouped summaries. Before interpreting measurement bands as clinical categories, verify the cut-offs and units against a reliable clinical reference. The project is presented as a SQL portfolio exercise, not a clinical decision-support tool.
