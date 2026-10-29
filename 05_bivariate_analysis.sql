@@ -1,6 +1,6 @@
---Hadda waxaan u gudbaynaa analysis-ka xiriirka u dhexeeya RiskLevel iyo clinical variables.
+-- Analyze the relationships between RiskLevel and selected clinical variables.
 
---RiskLevel ma ku kala duwan yahay SystolicBP categories?
+-- Does the distribution of RiskLevel differ across SystolicBP categories?
 
 SELECT 
     RiskLevel,
@@ -34,7 +34,7 @@ GROUP BY
         ELSE '161+'
     END;
 
---RiskLevel ma ku kala duwan yahay DiastolicBP categories?
+-- Does the distribution of RiskLevel differ across DiastolicBP categories?
 
 SELECT 
     RiskLevel,
@@ -67,7 +67,7 @@ GROUP BY
         WHEN DiastolicBP BETWEEN 86 AND 100 THEN 'High'
         ELSE '101+'
     END;
---RiskLevel ma ku kala duwan yahay Blood_Sugar_categories?
+-- Does the distribution of RiskLevel differ across blood sugar categories?
 
 SELECT 
     RiskLevel,
@@ -101,7 +101,7 @@ GROUP BY
         ELSE '19.1+'
     END;
 
---RiskLevel ma ku kala duwan yahay Heart Rate categories?
+-- Does the distribution of RiskLevel differ across heart rate categories?
 
 SELECT 
     RiskLevel,
@@ -135,7 +135,7 @@ GROUP BY
         ELSE 'Very High Heart Rate'
     END;
 
---RiskLevel ma ku kala duwan yahay BodyTem_categories?
+-- Does the distribution of RiskLevel differ across body temperature categories?
 
 SELECT 
     RiskLevel,
